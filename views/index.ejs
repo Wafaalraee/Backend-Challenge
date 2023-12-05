@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>    
+    <h1>Welcome To Facebook</h1>
+    <div class="link-container">
+        <nav class="links">         
+        </nav>
+    </div>
+    <div class="container">
+    <section id="sec">
+        <form action="/feed" method="post">
+            <input type="text" name="name" id="user-name" placeholder="name" required><br>
+            <textarea name="message" id="post" placeholder="message" required></textarea>
+            <button>Post a message</button>
+        </form>
+    </section><br>
+    <div class="user-list">
+        <% for (let i=0; i<users.length;i++) {%>
+        <div class="user-list-container"> 
+            <div class="text">
+                <p class="name-date"><span><%= users[i].name %></span></p>
+                <p class="user-post"><%= users[i].message %></p> 
+            </div><br>                             
+                <a href="/feed/<%=users[i]._id %>">See More...</a><br>  
+                <p class="time"><%= users[i].created_at %></p>                
+        </div>
+        <%}%>
+    </div>
+</div>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

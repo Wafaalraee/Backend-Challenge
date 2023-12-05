@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <h1>Welcome To Facebook</h1>
+
+    <div class="link-container">
+        <nav class="links">    
+        </nav>
+    </div>
+    <div class="container">
+    <div class="article-info">
+        <h2><%=user.name %></h2>
+        <p name="articleContent" id="article-content"><%= user.message %></p>
+        <p class="time"><%= user.created_at %></p> 
+    </div>
+    <div class="btns">
+        <a href="/feed/edit/<%=user._id %>" class="edit">Edit</a>                   
+        <form action="/delete-user/<%= user._id %>" method="post">
+            <button>Delete</button>
+        </form>
+    </div>
+</div>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>
